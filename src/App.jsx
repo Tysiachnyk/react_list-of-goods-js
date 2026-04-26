@@ -51,6 +51,8 @@ export const App = () => {
   const [isReversed, setIsReversed] = useState(false);
   const sortedGoods = getSortedGoods(goodsFromServer, sortField, isReversed);
 
+  const isModified = sortField || isReversed;
+
   return (
     <div className="section content">
       <div className="buttons">
@@ -78,7 +80,7 @@ export const App = () => {
           Reverse
         </button>
 
-        {(sortField || isReversed) && (
+        {isModified && (
           <button
             type="button"
             className="button is-danger is-light"
