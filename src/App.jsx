@@ -15,17 +15,20 @@ export const goodsFromServer = [
   'Garlic',
 ];
 
+const SORT_ALPHABETICALLY = 'alphabetically';
+const SORT_BY_LENGTH = 'length';
+
 function getSortedGoods(goods, query, isReversed) {
   const copyGoods = [...goods];
 
   if (query) {
     copyGoods.sort((good1, good2) => {
       switch (query) {
-        case 'alphabetically': {
+        case SORT_ALPHABETICALLY: {
           return good1.localeCompare(good2);
         }
 
-        case 'length': {
+        case SORT_BY_LENGTH: {
           return good1.length - good2.length;
         }
 
@@ -53,16 +56,16 @@ export const App = () => {
       <div className="buttons">
         <button
           type="button"
-          className={`button is-info ${sortField === 'alphabetically' ? '' : 'is-light'}`}
-          onClick={() => setSortField('alphabetically')}
+          className={`button is-info ${sortField === SORT_ALPHABETICALLY ? '' : 'is-light'}`}
+          onClick={() => setSortField(SORT_ALPHABETICALLY)}
         >
           Sort alphabetically
         </button>
 
         <button
           type="button"
-          className={`button is-success ${sortField === 'length' ? '' : 'is-light'}`}
-          onClick={() => setSortField('length')}
+          className={`button is-success ${sortField === SORT_BY_LENGTH ? '' : 'is-light'}`}
+          onClick={() => setSortField(SORT_BY_LENGTH)}
         >
           Sort by length
         </button>
